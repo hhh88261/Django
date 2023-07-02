@@ -15,3 +15,22 @@ def login_view(request):
             print("failed")
 
     return render(request, "users/login.html")
+    
+def logout_view(request):
+    logout(request)
+    return redirect("user:login")
+
+def signup_view(request):
+
+    if request.method == 'POST':
+        print(request.POST)
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        email = request.POST.get("email")
+
+        user = User.objects.create_user(username, email, password)
+        user.save()
+
+        return redirect("user:login")
+
+    return render(request, "users/signup.html")    
