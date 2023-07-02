@@ -58,7 +58,7 @@
 <body>
   <div class="container">
     <h2>로그인</h2>
-    <form>
+    <form action="" method="POST">
       {% csrf_token %}
       <label for="username">사용자명:</label>
       <input type="text" id="username" name="username" required>
@@ -68,6 +68,7 @@
 
       <button type="submit">로그인</button>
     </form>
+    <a href = "{% url 'user:signup' %}">SIGN UP</a>
   </div>
 </body>
 {% endif %}
