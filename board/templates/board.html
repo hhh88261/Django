@@ -1,15 +1,29 @@
-<html>
 <a href="{% url 'board:gallery' %}">글 작성하기</a>
-<head>
-</head>
-<body>
-  <h1>게시판</h1>
-  <h2>게시물 목록</h2>
-  <ul>
-    <li>게시물 1</li>
-    <li>게시물 2</li>
-    <li>게시물 3</li>
-  </ul>
-
-</body>
-</html>
+<div class = 'contanier'>
+    <div class = "row pt-4 my-3">
+        <div class = "col-md-12">
+            <h3>게시판</h3>
+        </div>
+    </div>
+    <div class="row my-3">
+        <table class = "table table-hover table-bordered">
+            <thead>
+                <th>NO</th>
+                <th>작성자</th>
+                <th>제목</th>
+                <th>내용</th>
+            </thead>
+            <tbody>
+                {% for post in board_list %}
+                    <tr>
+                        <td>{{ forloop.revcounter }}</td>
+                        <td>{{ post.username}}</td>
+                        <td><a href="{% url 'board:detail' %}">{{ post.title }}</a></td>
+                        <td>{{ post.content|truncatechars:5 }}</td>
+                        <td></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+        </table>
+    </div>
+</div>
